@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="NewApi">
+        <ignore path="src/com/android/gallery3d/ui/GLRootView.java" />
+    </issue>
+    <issue id="WrongCall">
+        <ignore path="src/com/jingz/app/pano/ui/GLView.java" />
+    </issue>
+</lint>
