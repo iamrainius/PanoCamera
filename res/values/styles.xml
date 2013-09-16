@@ -46,4 +46,10 @@
     </style>
     
     <style name="Theme.CameraBase" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+    <style name="SwitcherButton">
+        <item name="android:background">@drawable/bg_pressed_exit_fading</item>
+        <item name="android:layout_width">@dimen/switcher_size</item>
+        <item name="android:layout_height">@dimen/switcher_size</item>
+    </style>
 </resources>

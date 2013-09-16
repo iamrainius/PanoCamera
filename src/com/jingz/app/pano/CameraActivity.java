@@ -105,4 +105,16 @@ public class CameraActivity extends Activity {
 		}
 	}
 
+	public void notifyScreenNailChanged() {
+		throw new RuntimeException();
+	}
+
+	public void setSwipingEnabled(boolean enabled) {
+		throw new RuntimeException();
+	}
+	
+	public ShutterButton getShutterButton() {
+        return mShutter;
+    }
+
 }

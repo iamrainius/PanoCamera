@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jingz.app.pano.ui.RotateImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/undo_button"
+    style="@style/SwitcherButton"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginBottom="2.0dip"
+    android:scaleType="center"
+    android:src="@drawable/filtershow_button_undo"
+    android:visibility="gone" />
+
