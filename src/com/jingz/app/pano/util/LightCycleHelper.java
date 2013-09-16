@@ -1,12 +1,12 @@
 package com.jingz.app.pano.util;
 
 import com.jingz.app.pano.CameraModule;
+import com.jingz.app.pano.PanoramaModule;
 
 public class LightCycleHelper {
 
 	public static CameraModule createPanoramaModule() {
-		// TODO Auto-generated method stub
-		return null;
+		return new PanoramaModule();
 	}
 
 }

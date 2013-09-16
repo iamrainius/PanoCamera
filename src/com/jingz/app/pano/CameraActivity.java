@@ -19,6 +19,7 @@ public class CameraActivity extends Activity {
 	private View mControlsBackground;
 	private View mShutterSwitcher;
 	private ShutterButton mShutter;
+	private boolean mPaused;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +29,63 @@ public class CameraActivity extends Activity {
 
 		init();
 
-//		mCurrentModule = LightCycleHelper.createPanoramaModule();
-//		mCurrentModule.init(this, mFrame, true);
-//		mOrientationListener = new MyOrientationEventListener(this);
+		mCurrentModule = LightCycleHelper.createPanoramaModule();
+		mCurrentModule.init(this, mFrame, true);
+		mOrientationListener = new MyOrientationEventListener(this);
 	}
 
 	private void init() {
 		mControlsBackground = findViewById(R.id.controls);
 		mShutterSwitcher = findViewById(R.id.camera_shutter_switcher);
 		mShutter = (ShutterButton) findViewById(R.id.shutter_button);
+	}
+	
+	
+	
+	@Override
+	protected void onPause() {
+		mPaused = true;
+		mOrientationListener.disable();
+		mCurrentModule.onPauseBeforeSuper();
+		super.onPause();
+		mCurrentModule.onPauseAfterSuper();
+	}
+
+	@Override
+	protected void onResume() {
+		mPaused = false;
+		mOrientationListener.enable();
+		mCurrentModule.onResumeBeforeSuper();
+		super.onResume();
+		mCurrentModule.onResumeAfterSuper();
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		mCurrentModule.onStop();
+		
+		// getStateManager().clearTasks();
+	}
+	
+	
+
+	private void openModule(CameraModule module, boolean canReuse) {
+		module.init(this, mFrame, canReuse && canReuseScreenNail());
+		mPaused = false;
+		module.onResumeBeforeSuper();
+		module.onResumeAfterSuper();
+	}
+	
+	private void closeModule(CameraModule module) {
+		module.onPauseBeforeSuper();
+		module.onPauseAfterSuper();
+		mFrame.removeAllViews();
+	}
+
+	private boolean canReuseScreenNail() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	private class MyOrientationEventListener extends OrientationEventListener {
