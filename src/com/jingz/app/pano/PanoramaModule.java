@@ -116,7 +116,7 @@ public class PanoramaModule implements CameraModule {
 		}
 
 		mRootView.setKeepScreenOn(false);
-		mScreenNail.releaseSurfaceTexture();
+//		mScreenNail.releaseSurfaceTexture();
 	}
 
 	@Override
